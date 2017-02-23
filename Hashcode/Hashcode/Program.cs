@@ -10,8 +10,14 @@ namespace Hashcode
     {
         static void Main(string[] args)
         {
-            DataSet s = new DataSet("me_at_the_zoo.in");
-            s.output("bitch");
+            DataSet kittens = new DataSet("kittens.in");
+            DataSet zoo = new DataSet("me_at_the_zoo.in");
+            DataSet trend = new DataSet("trending_today.in");
+            DataSet video = new DataSet("videos_worth_spreading.in");
+            kittens.output("kit_out");
+            zoo.output("zoo_out");
+            trend.output("trend_out");
+            video.output("video_out");
             Console.ReadLine();
         }
     }

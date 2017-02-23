@@ -214,9 +214,21 @@ namespace Hashcode
         public void output(string fileName)
         {
             ArrayList Output = new ArrayList();
+            int amount = 0;
+            String line = "";
             foreach (Cache c in caches)
             {
-                String line = "";
+                if (c.Videos.Count() >= 1)
+                {
+                    amount++;
+                    //a video in cache server
+                }
+            }
+            line += amount;
+            Output.Add(line);
+            foreach (Cache c in caches)
+            {
+                line = "";
                 line += c.Id;
                ////Console.Write(c.Id);
                 foreach (Video v in c.Videos)

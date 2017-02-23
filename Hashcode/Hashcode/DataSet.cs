@@ -14,30 +14,110 @@ namespace Hashcode
         int cache = 0;
         int cache_size = 0;
         Video[] videos;
+        Endpoint[] EndPoints;
         string[] lines;
+
+        public int Vid_num
+        {
+            get
+            {
+                return vid_num;
+            }
+
+            set
+            {
+                vid_num = value;
+            }
+        }
+
+        public int Endpoints
+        {
+            get
+            {
+                return endpoints;
+            }
+
+            set
+            {
+                endpoints = value;
+            }
+        }
+
+        public int Request_des
+        {
+            get
+            {
+                return request_des;
+            }
+
+            set
+            {
+                request_des = value;
+            }
+        }
+
+        public int Cache
+        {
+            get
+            {
+                return cache;
+            }
+
+            set
+            {
+                cache = value;
+            }
+        }
+
+        public int Cache_size
+        {
+            get
+            {
+                return cache_size;
+            }
+
+            set
+            {
+                cache_size = value;
+            }
+        }
+
+        internal Video[] Videos
+        {
+            get
+            {
+                return videos;
+            }
+
+            set
+            {
+                videos = value;
+            }
+        }
 
         public DataSet(String dataIn)
         {
             lines = System.IO.File.ReadAllLines("me_at_the_zoo.in");
             int i = 0;
+            int lineNum = 2;
             foreach (string s in split(lines[0], ' '))
             {
                 switch (i)
                 {
                     case 0:
-                        vid_num = int.Parse(s);
+                        Vid_num = int.Parse(s);
                         break;
                     case 1:
-                        endpoints = int.Parse(s);
+                        Endpoints = int.Parse(s);
                         break;
                     case 2:
-                        request_des = int.Parse(s);
+                        Request_des = int.Parse(s);
                         break;
                     case 3:
-                        cache = int.Parse(s);
+                        Cache = int.Parse(s);
                         break;
                     case 4:
-                        cache_size = int.Parse(s);
+                        Cache_size = int.Parse(s);
                         break;
                 }
                 i++;
@@ -46,21 +126,21 @@ namespace Hashcode
             int j = 0;
             foreach (string s in split(lines[1], ' '))
             {
-                videos = new Video[vid_num];
+                Videos = new Video[Vid_num];
                 int video_size = int.Parse(s);
-                videos[j] = new Video(j, video_size);
+                Videos[j] = new Video(j, video_size);
                 j++;
             }
-            for (int k = 0; k < endpoints; k++)
+            for (int k = 0; k < Endpoints; k++)
             {
                 //start input endpoints
                 Dictionary<Cache, int> caches;
-                string[] end = split(lines[2], ' ');
+                string[] end = split(lines[lineNum], ' ');
                 int data_lat = int.Parse(end[0]);
                 int num_cache = int.Parse(end[1]);
             }
             //start input endpoints
-            Console.WriteLine(vid_num + " " + endpoints + " " + request_des + " " + cache + " " + cache_size);
+            Console.WriteLine(Vid_num + " " + Endpoints + " " + Request_des + " " + Cache + " " + Cache_size);
         }
 
 

@@ -218,7 +218,7 @@ namespace Hashcode
             {
                 String line = "";
                 line += c.Id;
-                //Console.Write(c.Id);
+               ////Console.Write(c.Id);
                 foreach (Video v in c.Videos)
                 {
                     //each video in the cache

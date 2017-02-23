@@ -9,12 +9,12 @@ namespace Hashcode
     class DataSet
     {
         int vid_num = 0;
-        int endpoints = 0;
+        int endpoint_num = 0;
         int request_des = 0;
         int cache = 0;
         int cache_size = 0;
         Video[] videos;
-        Endpoint[] EndPoints;
+        Endpoint[] endPoints;
         string[] lines;
 
         public int Vid_num
@@ -27,19 +27,6 @@ namespace Hashcode
             set
             {
                 vid_num = value;
-            }
-        }
-
-        public int Endpoints
-        {
-            get
-            {
-                return endpoints;
-            }
-
-            set
-            {
-                endpoints = value;
             }
         }
 
@@ -82,7 +69,7 @@ namespace Hashcode
             }
         }
 
-        internal Video[] Videos
+        public Video[] Videos
         {
             get
             {
@@ -92,6 +79,32 @@ namespace Hashcode
             set
             {
                 videos = value;
+            }
+        }
+
+        public int Endpoint_num
+        {
+            get
+            {
+                return endpoint_num;
+            }
+
+            set
+            {
+                endpoint_num = value;
+            }
+        }
+
+        public Endpoint[] EndPoints
+        {
+            get
+            {
+                return endPoints;
+            }
+
+            set
+            {
+                endPoints = value;
             }
         }
 
@@ -130,6 +143,16 @@ namespace Hashcode
                 int video_size = int.Parse(s);
                 Videos[j] = new Video(j, video_size);
                 j++;
+            }
+            while (true)
+            {
+                string[] end = split(lines[lineNum], ' '); // get endpoint
+                int data_lat = int.Parse(end[0]);
+                int num_cache = int.Parse(end[1]);
+                for (int k = 0; k < Endpoints; k++)
+                {
+
+                }
             }
             for (int k = 0; k < Endpoints; k++)
             {

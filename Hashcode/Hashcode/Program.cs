@@ -15,7 +15,7 @@ namespace Hashcode
 
             // Read the file and display it line by line.
             System.IO.StreamReader file =
-               new System.IO.StreamReader("c:\\test.txt");
+               new System.IO.StreamReader("kittens.in");
             while ((line = file.ReadLine()) != null)
             {
                 Console.WriteLine(line);

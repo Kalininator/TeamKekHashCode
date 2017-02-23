@@ -9,7 +9,39 @@ namespace Hashcode
     class Endpoint
     {
         int latency;
-        Dictionary<Cache,int> caches;//cache and latency
+        Dictionary<Cache, int> caches;//cache and latency
+
+        public Endpoint(int lat, Dictionary<Cache, int> cache)
+        {
+            Latency = lat;
+            Caches = cache;
+        }
+
+        public int Latency
+        {
+            get
+            {
+                return latency;
+            }
+
+            set
+            {
+                latency = value;
+            }
+        }
+
+        internal Dictionary<Cache, int> Caches
+        {
+            get
+            {
+                return caches;
+            }
+
+            set
+            {
+                caches = value;
+            }
+        }
 
     }
 }

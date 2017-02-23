@@ -3,3 +3,4 @@ C:\Users\Computing\Documents\GitHub\TeamKekHashCode\Hashcode\Hashcode\bin\Debug\
 C:\Users\Computing\Documents\GitHub\TeamKekHashCode\Hashcode\Hashcode\bin\Debug\Hashcode.pdb
 C:\Users\Computing\Documents\GitHub\TeamKekHashCode\Hashcode\Hashcode\obj\Debug\Hashcode.exe
 C:\Users\Computing\Documents\GitHub\TeamKekHashCode\Hashcode\Hashcode\obj\Debug\Hashcode.pdb
+C:\Users\Computing\Documents\GitHub\TeamKekHashCode\Hashcode\Hashcode\obj\Debug\Hashcode.csprojResolveAssemblyReference.cache

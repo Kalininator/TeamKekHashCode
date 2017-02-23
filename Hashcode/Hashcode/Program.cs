@@ -10,7 +10,7 @@ namespace Hashcode
     {
         static void Main(string[] args)
         {
-            DataSet s = new DataSet(" test");
+            DataSet s = new DataSet("me_at_the_zoo.in");
             Console.ReadLine();
         }
     }

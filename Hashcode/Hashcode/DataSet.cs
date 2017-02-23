@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -124,7 +126,7 @@ namespace Hashcode
 
         public DataSet(String dataIn)
         {
-            lines = System.IO.File.ReadAllLines("me_at_the_zoo.in");
+            lines = System.IO.File.ReadAllLines(dataIn);
             int i = 0;
             int lineNum = 2;
             foreach (string s in split(lines[0], ' '))
@@ -158,9 +160,9 @@ namespace Hashcode
             }
             //input videos
             int j = 0;
+            Videos = new Video[Vid_num];
             foreach (string s in split(lines[1], ' '))
             {
-                Videos = new Video[Vid_num];
                 int video_size = int.Parse(s);
                 Videos[j] = new Video(j, video_size);
                 j++;
@@ -194,17 +196,37 @@ namespace Hashcode
 
             foreach (Endpoint end in endPoints)
             {
-                //Console.WriteLine("Endpoint latenct: " + end.Latency);
+                Console.WriteLine("Endpoint latenct: " + end.Latency);
                 foreach (KeyValuePair<int, int> ca in end.Caches)
                 {
-                    //Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
+                    Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
+                }
+                foreach (KeyValuePair<int, int> ca in end.Requests)
+                {
+                    Console.WriteLine("VideoID:" + ca.Key + " Num" + ca.Value);
                 }
             }
 
         }
 
-
-        public static string[] split(String s, char c)
+        public void output(string fileName)
+        {
+            ArrayList Output = new ArrayList();
+            foreach (Cache c in caches)
+            {
+                String line = "";
+                line += c.Id;
+                Console.Write(c.Id);
+                foreach (Video v in c.Videos)
+                {
+                    //each video in the cache
+                   line += " "+v.Id;
+                }
+                Output.Add(line);
+            }
+            File.WriteAllLines(fileName+".txt", Output.Cast<string>());
+        }
+        public string[] split(String s, char c)
         {
             return s.Split(c);
         }

@@ -16,6 +16,7 @@ namespace Hashcode
         {
             Latency = lat;
             Caches = cache;
+            requests = new Dictionary<int, int>();
         }
 
         public int Latency
@@ -28,6 +29,17 @@ namespace Hashcode
             set
             {
                 latency = value;
+            }
+        }
+        public void addRequest(int ID, int reqN)
+        {
+            if (requests.ContainsKey(ID))
+            {
+                requests[ID] = (reqN) + requests[ID];
+            }
+            else
+            {
+                requests.Add(ID, reqN);
             }
         }
 

@@ -182,15 +182,25 @@ namespace Hashcode
                 }
                 endPoints[k] = new Endpoint(data_lat, endpoint_caches);
             }
-            Console.WriteLine(Vid_num + " " + endpoint_num + " " + Request_des + " " + Cache + " " + Cache_size);
+            for (int lineN = lineNum; lineN < lines.Length;lineN++)
+            {
+                string[] lineNSplit = split(lines[lineN], ' ');
+                int videoID = int.Parse(lineNSplit[0]);
+                int endPointID = int.Parse(lineNSplit[1]);
+                int RequestNum = int.Parse(lineNSplit[2]);
+                EndPoints[endPointID].addRequest(videoID, RequestNum);
+            }
+
+
             foreach (Endpoint end in endPoints)
             {
-                Console.WriteLine("Endpoint latenct: " + end.Latency);
+                //Console.WriteLine("Endpoint latenct: " + end.Latency);
                 foreach (KeyValuePair<int, int> ca in end.Caches)
                 {
-                    Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
+                    //Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
                 }
             }
+
         }
 
 

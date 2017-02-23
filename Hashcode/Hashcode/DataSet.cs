@@ -149,12 +149,12 @@ namespace Hashcode
                 }
                 i++;
             }
+            endPoints = new Endpoint[endpoint_num];
             //create caches
             caches = new Cache[Cache];
             for (int cacss = 0; cacss < Cache; cacss++)
             {
                 caches[cacss] = new Cache(cacss, Cache_size);
-                Console.WriteLine(cacss + " " + cache_size); 
             }
             //input videos
             int j = 0;
@@ -165,23 +165,32 @@ namespace Hashcode
                 Videos[j] = new Video(j, video_size);
                 j++;
             }
-            //for (int k = 0; k < endpoint_num; k++)
-            //{
-            //    string[] end = split(lines[lineNum], ' '); // get endpoint
-            //    int data_lat = int.Parse(end[0]);
-            //    int num_cache = int.Parse(end[1]);
-            //    lineNum++;
-            //    for (int l = 0; l < num_cache; l++)
-            //    {
-            //        string[] cac = split(lines[lineNum], ' '); // get endpoint
-            //        int cacheID = int.Parse(cac[0]);
-            //        int cacheLate = int.Parse(cac[1]);
-            //        new Cache(cacheID,);
-            //        lineNum++;
-            //    }
-            //}
-            //start input endpoints
+            for (int k = 0; k < endpoint_num; k++)
+            {
+                string[] end = split(lines[lineNum], ' '); // get endpoint
+                int data_lat = int.Parse(end[0]);
+                int num_cache = int.Parse(end[1]);
+                lineNum++;
+                Dictionary<int, int> endpoint_caches = new Dictionary<int, int>();
+                for (int l = 0; l < num_cache; l++) // populate cacches
+                {
+                    string[] cac = split(lines[lineNum], ' '); // get caches
+                    int cacheID = int.Parse(cac[0]);
+                    int cacheLate = int.Parse(cac[1]);
+                    endpoint_caches.Add(cacheID, cacheLate);
+                    lineNum++;
+                }
+                endPoints[k] = new Endpoint(data_lat, endpoint_caches);
+            }
             Console.WriteLine(Vid_num + " " + endpoint_num + " " + Request_des + " " + Cache + " " + Cache_size);
+            foreach (Endpoint end in endPoints)
+            {
+                Console.WriteLine("Endpoint latenct: " + end.Latency);
+                foreach (KeyValuePair<int, int> ca in end.Caches)
+                {
+                    Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
+                }
+            }
         }
 
 

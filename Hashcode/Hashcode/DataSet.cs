@@ -13,6 +13,7 @@ namespace Hashcode
         int request_des = 0;
         int cache = 0;
         int cache_size = 0;
+        Cache[] caches;
         Video[] videos;
         Endpoint[] endPoints;
         string[] lines;
@@ -108,6 +109,19 @@ namespace Hashcode
             }
         }
 
+        public Cache[] Caches
+        {
+            get
+            {
+                return caches;
+            }
+
+            set
+            {
+                caches = value;
+            }
+        }
+
         public DataSet(String dataIn)
         {
             lines = System.IO.File.ReadAllLines("me_at_the_zoo.in");
@@ -121,7 +135,7 @@ namespace Hashcode
                         Vid_num = int.Parse(s);
                         break;
                     case 1:
-                        Endpoints = int.Parse(s);
+                        endpoint_num = int.Parse(s);
                         break;
                     case 2:
                         Request_des = int.Parse(s);
@@ -135,6 +149,13 @@ namespace Hashcode
                 }
                 i++;
             }
+            //create caches
+            caches = new Cache[Cache];
+            for (int cacss = 0; cacss < Cache; cacss++)
+            {
+                caches[cacss] = new Cache(cacss, Cache_size);
+                Console.WriteLine(cacss + " " + cache_size); 
+            }
             //input videos
             int j = 0;
             foreach (string s in split(lines[1], ' '))
@@ -144,26 +165,23 @@ namespace Hashcode
                 Videos[j] = new Video(j, video_size);
                 j++;
             }
-            while (true)
-            {
-                string[] end = split(lines[lineNum], ' '); // get endpoint
-                int data_lat = int.Parse(end[0]);
-                int num_cache = int.Parse(end[1]);
-                for (int k = 0; k < Endpoints; k++)
-                {
-
-                }
-            }
-            for (int k = 0; k < Endpoints; k++)
-            {
-                //start input endpoints
-                Dictionary<Cache, int> caches;
-                string[] end = split(lines[lineNum], ' ');
-                int data_lat = int.Parse(end[0]);
-                int num_cache = int.Parse(end[1]);
-            }
+            //for (int k = 0; k < endpoint_num; k++)
+            //{
+            //    string[] end = split(lines[lineNum], ' '); // get endpoint
+            //    int data_lat = int.Parse(end[0]);
+            //    int num_cache = int.Parse(end[1]);
+            //    lineNum++;
+            //    for (int l = 0; l < num_cache; l++)
+            //    {
+            //        string[] cac = split(lines[lineNum], ' '); // get endpoint
+            //        int cacheID = int.Parse(cac[0]);
+            //        int cacheLate = int.Parse(cac[1]);
+            //        new Cache(cacheID,);
+            //        lineNum++;
+            //    }
+            //}
             //start input endpoints
-            Console.WriteLine(Vid_num + " " + Endpoints + " " + Request_des + " " + Cache + " " + Cache_size);
+            Console.WriteLine(Vid_num + " " + endpoint_num + " " + Request_des + " " + Cache + " " + Cache_size);
         }
 
 

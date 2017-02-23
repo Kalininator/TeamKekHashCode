@@ -9,9 +9,10 @@ namespace Hashcode
     class Endpoint
     {
         int latency;
-        Dictionary<Cache, int> caches;//cache and latency
+        Dictionary<int, int> caches;//cacheID and latency
+        Dictionary<int, int> requests;//videoID and NumRequests
 
-        public Endpoint(int lat, Dictionary<Cache, int> cache)
+        public Endpoint(int lat, Dictionary<int, int> cache)
         {
             Latency = lat;
             Caches = cache;
@@ -30,7 +31,7 @@ namespace Hashcode
             }
         }
 
-        internal Dictionary<Cache, int> Caches
+        internal Dictionary<int, int> Caches
         {
             get
             {
@@ -43,5 +44,17 @@ namespace Hashcode
             }
         }
 
+        public Dictionary<int, int> Requests
+        {
+            get
+            {
+                return requests;
+            }
+
+            set
+            {
+                requests = value;
+            }
+        }
     }
 }

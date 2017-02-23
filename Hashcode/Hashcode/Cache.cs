@@ -10,15 +10,16 @@ namespace Hashcode
     {
         int id;
         int capacity;
-        Video[] videos;
+        List<Video> videos;
 
         public Cache(int id, int capacity)
         {
             this.id = id;
             this.capacity = capacity;
+            videos = new List<Video>();
         }
 
-        int remainingCapacity()
+        public int remainingCapacity()
         {
             int remaining = Capacity;
             foreach (Video vid in Videos)
@@ -54,7 +55,7 @@ namespace Hashcode
             }
         }
 
-        internal Video[] Videos
+        public List<Video> Videos
         {
             get
             {
@@ -66,6 +67,12 @@ namespace Hashcode
                 videos = value;
             }
         }
+
+        public void addVideo(Video v)
+        {
+            videos.Add(v);
+        }
+        
 
         
     }

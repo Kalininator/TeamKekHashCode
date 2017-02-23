@@ -196,16 +196,18 @@ namespace Hashcode
 
             foreach (Endpoint end in endPoints)
             {
-                Console.WriteLine("Endpoint latenct: " + end.Latency);
+                //Console.WriteLine("Endpoint latenct: " + end.Latency);
                 foreach (KeyValuePair<int, int> ca in end.Caches)
                 {
-                    Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
+                    //Console.WriteLine("CacheID:" + ca.Key  + " cahe latency" + ca.Value);
                 }
                 foreach (KeyValuePair<int, int> ca in end.Requests)
                 {
-                    Console.WriteLine("VideoID:" + ca.Key + " Num" + ca.Value);
+                    //Console.WriteLine("VideoID:" + ca.Key + " Num" + ca.Value);
                 }
             }
+            FirstFit f = new FirstFit();
+            f.Run(this);
 
         }
 
@@ -216,7 +218,7 @@ namespace Hashcode
             {
                 String line = "";
                 line += c.Id;
-                Console.Write(c.Id);
+                //Console.Write(c.Id);
                 foreach (Video v in c.Videos)
                 {
                     //each video in the cache
